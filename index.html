@@ -94,7 +94,6 @@ body.modo-leve .hero::before { content: '📷 Imagem oculta (Modo Leve)'; displa
       <div id="menu-admin-btn" style="display: none;">
         <button onclick="document.getElementById('admin-modal').style.display='grid'; document.getElementById('menu-conta').style.display='none';" style="width: 100%; padding: 12px 15px; background: #2d2d2d; border: 1px solid #333; border-radius: 20px; color: #fff; font-size: 1rem; display: flex; align-items: center; gap: 15px; cursor: pointer;"><span style="background: #d93025; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">🛡️</span> Painel de Admin</button>
       </div>
-      <button onclick="copiarMeuID()" style="width: 100%; padding: 12px 15px; background: #2d2d2d; border: 1px solid #333; border-radius: 20px; color: #fff; font-size: 1rem; display: flex; align-items: center; gap: 15px; cursor: pointer;"><span style="background: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">📋</span> Copiar meu ID</button>
       <button onclick="document.getElementById('settings-modal').style.display='grid'; document.getElementById('menu-conta').style.display='none';" style="width: 100%; padding: 12px 15px; background: #2d2d2d; border: 1px solid #333; border-radius: 20px; color: #fff; font-size: 1rem; display: flex; align-items: center; gap: 15px; cursor: pointer;"><span style="background: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">⚙️</span> Configurações</button>
       <button onclick="document.getElementById('auth-logout').click(); document.getElementById('menu-conta').style.display='none';" style="width: 100%; padding: 12px 15px; background: #2d2d2d; border: 1px solid #333; border-radius: 20px; color: #fff; font-size: 1rem; display: flex; align-items: center; gap: 15px; cursor: pointer;"><span style="background: #333; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">🚪</span> Sair da Conta</button>
     </div>
@@ -247,20 +246,6 @@ body.modo-leve .hero::before { content: '📷 Imagem oculta (Modo Leve)'; displa
   </div>
 </div>
 
-<!-- Modal de Enviar Prova -->
-<div id="prova-modal" style="display:none;">
-  <div class="modal-card" style="max-width:400px;">
-    <h2 style="color:#fde047; margin-bottom:15px;">Enviar Prova</h2>
-    <p style="color:#fff; font-size:0.9rem; margin-bottom:15px;">Tire um print da sua conquista e mande o link da imagem aqui!</p>
-    <input type="hidden" id="prova-missao-id">
-    <input type="hidden" id="prova-missao-nome">
-    <input id="prova-link" class="game-input" type="text" placeholder="Link do Print (Imgbb, Imgur, etc)" style="background:#fff; color:#000; margin-bottom:10px;">
-    <textarea id="prova-msg" class="game-input" placeholder="Sua mensagem (Ex: Mandei 5 mensagens!)" style="background:#fff; color:#000; margin-bottom:10px; height:60px;"></textarea>
-    <button class="buy-btn green" style="width:100%; margin-bottom:10px;" onclick="enviarProva()">ENVIAR PROVA</button>
-    <button class="buy-btn" style="width:100%; background:#555; color:#fff; text-shadow:none;" onclick="document.getElementById('prova-modal').style.display='none'">Cancelar</button>
-  </div>
-</div>
-
 <!-- Painel de Administrador -->
 <div id="admin-modal" style="display:none; background:rgba(0,0,0,0.7); padding:20px; overflow-y:auto;">
   <div style="max-width:800px; margin:0 auto; background:#1f1f1f; border:3px solid #000; border-radius:4px; box-shadow:0 10px 30px rgba(0,0,0,0.8); overflow:hidden; display:flex; flex-direction:column; max-height:90vh;">
@@ -271,7 +256,7 @@ body.modo-leve .hero::before { content: '📷 Imagem oculta (Modo Leve)'; displa
     <div style="display:flex; flex:1; overflow:hidden; background:#2d2d2d;">
       <div style="width:180px; background:#1a1a1a; padding:10px; border-right:3px solid #000; display:flex; flex-direction:column; gap:8px; overflow-y:auto;">
         <button onclick="mudarAba('eventos', this)" class="admin-tab ativo" style="background:linear-gradient(to bottom,#4ade80,#16a34a); border:2px solid #000; color:white; padding:8px; font-weight:bold; text-shadow:1px 1px 0 #000; box-shadow:0 3px 0 #000; text-align:left; cursor:pointer;">📅 Eventos</button>
-        <button onclick="mudarAba('provas', this)" class="admin-tab" style="background:linear-gradient(to bottom,#a8a8a8,#6e6e6e); border:2px solid #000; color:white; padding:8px; font-weight:bold; text-shadow:1px 1px 0 #000; box-shadow:0 3px 0 #000; text-align:left; cursor:pointer;">📸 Provas / Admins</button>
+        <button onclick="mudarAba('provas', this)" class="admin-tab" style="background:linear-gradient(to bottom,#a8a8a8,#6e6e6e); border:2px solid #000; color:white; padding:8px; font-weight:bold; text-shadow:1px 1px 0 #000; box-shadow:0 3px 0 #000; text-align:left; cursor:pointer;">📸 Admins</button>
         <button onclick="mudarAba('hall', this)" class="admin-tab" style="background:linear-gradient(to bottom,#a8a8a8,#6e6e6e); border:2px solid #000; color:white; padding:8px; font-weight:bold; text-shadow:1px 1px 0 #000; box-shadow:0 3px 0 #000; text-align:left; cursor:pointer;">🏆 Hall da Fama</button>
         <button onclick="mudarAba('banco_missoes', this)" class="admin-tab" style="background:linear-gradient(to bottom,#a8a8a8,#6e6e6e); border:2px solid #000; color:white; padding:8px; font-weight:bold; text-shadow:1px 1px 0 #000; box-shadow:0 3px 0 #000; text-align:left; cursor:pointer;">🎯 Banco de Missões</button>
       </div>
@@ -289,15 +274,16 @@ body.modo-leve .hero::before { content: '📷 Imagem oculta (Modo Leve)'; displa
         <div id="aba-provas" class="admin-conteudo" style="display:none;">
           <h3 style="color:#fff; text-shadow:1px 1px 0 #000; margin-bottom:15px; border-bottom:2px solid #000; padding-bottom:5px;">Adicionar Administrador</h3>
           <div style="background:#222; padding:15px; border-radius:8px; margin-bottom:20px;">
-            <label style="color:#fff; font-size:0.9rem;">ID da Conta (Copiado da Bolinha):</label>
-            <input id="adm-novo-id" class="game-input" placeholder="Cole o ID do jogador aqui" style="background:#fff; color:#000; margin-top:5px;">
+            <label style="color:#fff; font-size:0.9rem;">Nome do Jogador (como aparece no topo):</label>
+            <input id="adm-novo-id" class="game-input" placeholder="Ex: pedroalt342" style="background:#fff; color:#000; margin-top:5px;">
             <button onclick="adicionarAdmin()" class="buy-btn green" style="width:100%; margin-top:10px;">Adicionar Admin</button>
           </div>
-          <h3 style="color:#fff; text-shadow:1px 1px 0 #000; margin-bottom:15px; border-bottom:2px solid #000; padding-bottom:5px;">Aceitar Missão por ID</h3>
+          
+          <h3 style="color:#fff; text-shadow:1px 1px 0 #000; margin-bottom:15px; border-bottom:2px solid #000; padding-bottom:5px;">Aceitar Missão (Ticket do Discord)</h3>
           <div style="background:#222; padding:15px; border-radius:8px; margin-bottom:15px;">
-            <label style="color:#fff; font-size:0.9rem;">ID da Missão (Enviado pelo Jogador):</label>
+            <label style="color:#fff; font-size:0.9rem;">ID da Missão (Enviado no Ticket):</label>
             <input id="adm-busca-id" class="game-input" placeholder="Cole o ID aqui" style="background:#fff; color:#000; margin-top:5px;">
-            <button onclick="buscarProvaPorId()" class="buy-btn blue" style="width:100%; margin-top:10px;">Buscar Prova</button>
+            <button onclick="buscarProvaPorId()" class="buy-btn blue" style="width:100%; margin-top:10px;">Buscar Missão</button>
           </div>
           <div id="resultado-prova" style="color:white; display:grid; gap:10px;"></div>
         </div>
@@ -324,7 +310,7 @@ body.modo-leve .hero::before { content: '📷 Imagem oculta (Modo Leve)'; displa
 <script>
 const STORE='lbzArenaSaveV1',todayKey=()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()},defaults={points:0,gameDay:todayKey(),quizDone:!1,numberDone:!1,memoryDone:!1,errorDone:!1};let save;try{save={...defaults,...JSON.parse(localStorage.getItem(STORE)||'{}')}}catch{save={...defaults}}save.gameDay!==todayKey()&&(save.gameDay=todayKey(),save.quizDone=!1,save.numberDone=!1,save.memoryDone=!1,save.errorDone=!1);function persist(){try{localStorage.setItem(STORE,JSON.stringify(save))}catch{}document.getElementById('arena-points').textContent=save.points;window.dispatchEvent(new CustomEvent('lbz-points-updated'))}function addPoints(n){save.points+=n,persist()}
 document.querySelectorAll('[data-quiz]').forEach(e=>e.addEventListener('click',()=>{const t=document.getElementById('quiz-status');save.quizDone?t.textContent='Já ganhou os pontos hoje.':e.dataset.quiz==='right'?(save.quizDone=!0,addPoints(10),t.textContent='Acertou! +10 pts',t.className='status-box success',document.querySelectorAll('[data-quiz]').forEach(e=>e.disabled=!0)):(t.textContent='Errou! Tenta outra.',t.className='status-box error')}));let secret=Math.floor(10*Math.random())+1,numberWon=!!save.numberDone;numberWon&&(document.getElementById('guess-button').disabled=!0,document.getElementById('number-guess').disabled=!0,document.getElementById('number-status').textContent='Já recebeu hoje.',document.getElementById('number-status').className='status-box success');document.getElementById('guess-button').addEventListener('click',()=>{const e=document.getElementById('number-guess'),t=Number(e.value),o=document.getElementById('number-status');if(!e.value||t<1||t>10)return o.textContent='Digita de 1 a 10.',void(o.className='status-box error');if(!numberWon)if(t===secret){numberWon=!0,save.numberDone=!0,addPoints(10),o.textContent='Acertou! +10 pts',o.className='status-box success',document.getElementById('guess-button').disabled=!0,e.disabled=!0}else o.textContent=t<secret?'É maior!':'É menor!',o.className='status-box error'});document.getElementById('reset-number-btn').addEventListener('click',()=>{numberWon||(secret=Math.floor(10*Math.random())+1,document.getElementById('number-guess').value='',document.getElementById('number-status').textContent='Novo número gerado! Tente adivinhar.',document.getElementById('number-status').className='status-box')});const symbols=['💜','🎮','👑','⚡','💜','🎮','👑','⚡'];let first=null,lock=!1,matches=0,memoryAwarded=save.memoryDone;function setupMemory(){const e=document.getElementById('memory-grid');e.innerHTML='',first=null,lock=!1,matches=0,symbols.slice().sort(()=>Math.random()-.5).forEach(t=>{const o=document.createElement('button');o.className='memory-card',o.textContent='❔',o.dataset.symbol=t,o.addEventListener('click',()=>{if(lock||memoryAwarded||o.disabled||'❔'!==o.textContent)return;if(o.textContent=t,!first)return void(first=o);if(first.dataset.symbol===o.dataset.symbol){if(first.disabled=!0,o.disabled=!0,matches++,first=null,4===matches){const t=document.getElementById('memory-status');t.textContent=memoryAwarded?'Concluído!':'Perfeito! +15 pts',t.className='status-box success',memoryAwarded||(memoryAwarded=!0,save.memoryDone=!0,addPoints(15))}}else{const e=first;first=null,lock=!0,setTimeout(()=>{e.textContent='❔',o.textContent='❔',lock=!1},700)}}),e.appendChild(o)})}memoryAwarded&&(document.getElementById('memory-status').textContent='Já recebeu hoje.');const spotScenes=[{name:'Praia',sky:'#8edbff',ground:'#f5d68a',objects:[['☀️',.2,.2],['🌴',.77,.48],['🦀',.48,.79],['⛱️',.28,.59]]},{name:'Parque',sky:'#b7edff',ground:'#72c875',objects:[['☁️',.23,.2],['🌳',.75,.48],['🦋',.48,.65],['🌷',.28,.8]]}];let currentDifference=0,wrongImage=1;function sceneSvg(e,t,o){const n=e.objects.map((e,n)=>{let[a,s,l]=e;if(n===o&&t===wrongImage){const e=[['☀️','🌙'],['🌴','🌲'],['🦀','🐚'],['⛱️','☂️'],['☁️','🌤️'],['🌳','🌲'],['🦋','🐝'],['🌷','🌻']].find(e=>e[0]===a);a=e?e[1]:'✨'}return'<text x="'+300*s+'" y="'+190*l+'" font-size="35" text-anchor="middle" dominant-baseline="middle">'+a+'</text>'}).join('');return'<svg viewBox="0 0 300 190"><rect width="300" height="190" fill="'+e.sky+'"/><circle cx="255" cy="28" r="14" fill="#fff7c2" opacity=".9"/><path d="M0 125 Q65 90 125 126 T300 112 V190 H0Z" fill="'+e.ground+'"/><path d="M0 150 Q70 132 145 153 T300 140 V190 H0Z" fill="#000" opacity=".08"/>'+n+'</svg>'}function renderErrorChallenge(){const e=document.getElementById('error-options'),t=spotScenes[Math.floor(Math.random()*spotScenes.length)];if(currentDifference=Math.floor(Math.random()*t.objects.length),wrongImage=Math.floor(2*Math.random()),e.innerHTML='<button type="button" class="spot-picture" data-spot="0">'+sceneSvg(t,0,currentDifference)+'<div class="spot-label">Opção 1</div></button><button type="button" class="spot-picture" data-spot="1">'+sceneSvg(t,1,currentDifference)+'<div class="spot-label">Opção 2</div></button>',save.errorDone)return void(e.innerHTML='<p style="grid-column: span 2; text-align:center; color:#fde047; font-weight:900;">Recompensa já recebida hoje.</p>');e.querySelectorAll('[data-spot]').forEach(t=>t.addEventListener('click',()=>{const o=document.getElementById('error-status');Number(t.dataset.spot)===wrongImage?(save.errorDone=!0,addPoints(10),o.textContent='Achou! +10 pts',o.className='status-box success',e.querySelectorAll('button').forEach(e=>e.disabled=!0)):(o.textContent='Errou a diferença.',o.className='status-box error')}))}setupMemory();persist();renderErrorChallenge();
-document.querySelectorAll('[data-gallery-upload]').forEach(e=>{e.addEventListener('change',()=>{const t=document.querySelector('[data-gallery-preview="'+e.dataset.galleryUpload+'"]');for(const o of e.files||[]){const e=URL.createObjectURL(o),n=document.createElement('div');n.className='gallery-item';const a=document.createElement(o.type.startsWith('video/')?'video':'img');'VIDEO'===a.tagName&&(a.controls=!0);a.src=e;const s=document.createElement('button');s.className='btn-remove';s.textContent='X';s.onclick=()=>{URL.revokeObjectURL(e);n.remove()};n.append(a,s);t.prepend(n)}e.value=''})});
+document.querySelectorAll('[data-gallery-upload]').forEach(e=>{e.addEventListener('change',()=>{const t=document.querySelector('[data-gallery-preview="'+e.dataset.galleryUpload+'"]');for(const o of e.files||[]){const e=URL.createObjectURL(o),n=document.createElement('div');n.className='gallery-item';const a=document.createElement(o.type.startsWith('video/')?'video':'img');'VIDEO'===a.tagName&&(a.controls=!0);a.src=e;const s=document.createElement('button');s.className='btn-remove';s.textContent='X';s.onclick=()=>{URL.revokeObjectURL(e);n.remove()};n.append(a,s);t.prepend(n)}e.value=''})})
 const SUPABASE_URL='https://tqmlwhkahkdhhilxhodj.supabase.co',SUPABASE_KEY='sb_publishable_LxTcanzunv2IZ32Ew2laUA_5E_p2Uxg';let currentUser=null;
 
 if(window.supabase){
@@ -376,78 +362,111 @@ if(window.supabase){
     document.getElementById('settings-modal').style.display = 'none';
   };
 
-  // --- FUNÇÃO PARA COPIAR ID ---
-  window.copiarMeuID = function() {
-    if (!currentUser) return;
-    navigator.clipboard.writeText(currentUser.id).then(() => {
-      alert("✅ ID copiado!\n\n" + currentUser.id + "\n\nCole no campo para adicionar Admin.");
-      document.getElementById('menu-conta').style.display = 'none';
-    }).catch(() => {
-      prompt("Copie o ID abaixo:", currentUser.id);
-    });
-  };
-
-  // --- FUNÇÃO PARA ADICIONAR ADMIN ---
+  // --- FUNÇÃO PARA ADICIONAR ADMIN POR NOME ---
   window.adicionarAdmin = async function() {
-    const id = document.getElementById('adm-novo-id').value.trim();
-    if(!id) return alert('Cole o ID da conta!');
-    const { error } = await e.from('admins').insert([{ user_id: id }]);
-    if(error) alert('Erro ao adicionar: ' + error.message);
-    else { alert('Admin adicionado!'); document.getElementById('adm-novo-id').value = ''; }
+    const nomeBusca = document.getElementById('adm-novo-id').value.trim();
+    if(!nomeBusca) return alert('Digite o nome do jogador!');
+
+    const { data: player, error: erroBusca } = await e.from('players')
+      .select('id')
+      .ilike('username', nomeBusca)
+      .maybeSingle();
+
+    if (erroBusca) return alert('Erro ao buscar jogador: ' + erroBusca.message);
+    if (!player) return alert('Nenhum jogador encontrado com o nome "' + nomeBusca + '". Peça para ele mudar o apelido nas Configurações.');
+
+    const { error } = await e.from('admins').insert([{ user_id: player.id }]);
+    
+    if(error) {
+      alert('Erro ao adicionar: ' + error.message);
+    } else {
+      alert('✅ ' + nomeBusca + ' agora é Admin!');
+      document.getElementById('adm-novo-id').value = '';
+    }
   };
 
-  // --- LÓGICA DE MISSÕES DIÁRIAS ---
+  // --- LÓGICA DE MISSÕES DIÁRIAS (SEM BOTÃO DE PROVA) ---
   async function carregarMissoesDiarias() {
     const div = document.getElementById('lista-missoes');
     if (!currentUser) { div.innerHTML = '<p>Entre para ver as missões.</p>'; return; }
     
     const hoje = new Date(); const diaStr = hoje.toISOString().split('T')[0];
     
-    let { data: missoesDoDia } = await e.from('missoes_usuario_dia').select('*, banco_missoes(*)').eq('user_id', currentUser.id).eq('data_sorteio', diaStr);
-    let listaMissoes = missoesDoDia;
-    
-    if (!listaMissoes || listaMissoes.length === 0) {
-      const { data: todasMissoes } = await e.from('banco_missoes').select('*');
-      if (todasMissoes && todasMissoes.length > 0) {
+    try {
+      let { data: missoesDoDia, error: err1 } = await e.from('missoes_usuario_dia')
+        .select('*, banco_missoes(*)')
+        .eq('user_id', currentUser.id)
+        .eq('data_sorteio', diaStr);
+        
+      if (err1) {
+        div.innerHTML = `<p style="color:red;">Erro ao buscar missões: ${err1.message}</p>`;
+        return;
+      }
+
+      let listaMissoes = missoesDoDia;
+      
+      if (!listaMissoes || listaMissoes.length === 0) {
+        const { data: todasMissoes, error: err2 } = await e.from('banco_missoes').select('*');
+        
+        if (err2) {
+           div.innerHTML = `<p style="color:red;">Erro ao buscar banco: ${err2.message}</p>`;
+           return;
+        }
+
+        if (!todasMissoes || todasMissoes.length === 0) {
+           div.innerHTML = '<p style="color:red;">O banco de missões está vazio! Crie uma missão no painel Admin.</p>';
+           return;
+        }
+
         const sorteadas = todasMissoes.sort(() => 0.5 - Math.random()).slice(0, 3);
-        for (let m of sorteadas) { await e.from('missoes_usuario_dia').insert({ user_id: currentUser.id, mission_id: m.id, data_sorteio: diaStr, progresso: 0, status: 'pendente' }); }
-        const { data: recarregado } = await e.from('missoes_usuario_dia').select('*, banco_missoes(*)').eq('user_id', currentUser.id).eq('data_sorteio', diaStr);
+        
+        for (let m of sorteadas) {
+          await e.from('missoes_usuario_dia').insert({ 
+              user_id: currentUser.id, 
+              mission_id: m.id, 
+              data_sorteio: diaStr, 
+              progresso: 0, 
+              status: 'pendente' 
+          });
+        }
+        
+        const { data: recarregado } = await e.from('missoes_usuario_dia')
+          .select('*, banco_missoes(*)')
+          .eq('user_id', currentUser.id)
+          .eq('data_sorteio', diaStr);
+          
         listaMissoes = recarregado;
       }
-    }
-    
-    if (!listaMissoes || listaMissoes.length === 0) { div.innerHTML = '<p style="color:#aaa;">Nenhuma missão hoje. Tente novamente.</p>'; return; }
-    
-    div.innerHTML = listaMissoes.map(item => {
-      const m = item.banco_missoes;
-      const pct = Math.min(100, (item.progresso / m.goal_count) * 100);
-      let botao = '';
-      if (item.status === 'pendente') botao = `<button class="buy-btn blue" style="padding:5px 10px; font-size:0.8rem; margin-top:5px;" onclick="abrirProva('${m.id}', '${m.title}')">Enviar Prova</button>`;
-      else if (item.status === 'concluida') botao = `<span style="color:#4ade80; font-weight:bold; font-size:0.8rem;">✅ Aguardando ADM</span>`;
-      else if (item.status === 'aceita') botao = `<span style="color:#fde047; font-weight:bold; font-size:0.8rem;">🏆 Recebida</span>`;
       
-      return `<div style="background:rgba(0,0,0,.5);padding:15px;border-radius:10px;border:2px solid #111;">
-          <div style="display:flex;justify-content:space-between;">
-            <div>
-              <span style="font-weight:900;color:#fff; font-size:1.1rem;">${m.icon || '🎯'} ${m.title}</span><br>
-              <span style="font-size:0.65rem; color:#aaa;">ID: ${m.id}</span>
+      if (!listaMissoes || listaMissoes.length === 0) { 
+          div.innerHTML = '<p style="color:#aaa;">Nenhuma missão gerada. Tente novamente.</p>'; 
+          return; 
+      }
+      
+      div.innerHTML = listaMissoes.map(item => {
+        const m = item.banco_missoes;
+        const pct = Math.min(100, (item.progresso / m.goal_count) * 100);
+        
+        // O botão de enviar prova FOI REMOVIDO
+        let botao = ''; 
+        
+        return `<div style="background:rgba(0,0,0,.5);padding:15px;border-radius:10px;border:2px solid #111;">
+            <div style="display:flex;justify-content:space-between;">
+              <div>
+                <span style="font-weight:900;color:#fff; font-size:1.1rem;">${m.icon || '🎯'} ${m.title}</span><br>
+                <span style="font-size:0.65rem; color:#aaa;">ID: ${m.id}</span>
+              </div>
+              <span style="color:#fde047;font-weight:900;">+${m.reward_points} pts</span>
             </div>
-            <span style="color:#fde047;font-weight:900;">+${m.reward_points} pts</span>
-          </div>
-          <p style="font-size:.85rem;color:#d0b8db; margin-top:5px;">${m.description}</p>
-          <div style="width:100%;background:#111;height:10px;border-radius:10px;margin-top:10px;"><div style="width:${pct}%;background:#a855f7;height:100%;border-radius:10px;"></div></div>
-          <div style="text-align:right; margin-top:8px;">${botao}</div></div>`;
-    }).join('');
-  }
+            <p style="font-size:.85rem;color:#d0b8db; margin-top:5px;">${m.description}</p>
+            <div style="width:100%;background:#111;height:10px;border-radius:10px;margin-top:10px;"><div style="width:${pct}%;background:#a855f7;height:100%;border-radius:10px;"></div></div>
+            <div style="text-align:right; margin-top:8px;">${botao}</div></div>`;
+      }).join('');
 
-  window.abrirProva = function(id, nome) { document.getElementById('prova-missao-id').value = id; document.getElementById('prova-missao-nome').value = nome; document.getElementById('prova-modal').style.display = 'grid'; };
-  window.enviarProva = async function() {
-    const missaoId = document.getElementById('prova-missao-id').value; const missaoNome = document.getElementById('prova-missao-nome').value;
-    const link = document.getElementById('prova-link').value; const msg = document.getElementById('prova-msg').value;
-    if(!link || !msg) return alert('Preencha o link e a mensagem!');
-    const { error } = await e.from('provas_missoes').insert([{ user_id: currentUser.id, username: currentUser.email.split('@')[0], mission_id: missaoId, mission_name: missaoNome, image_url: link, message: msg, status: 'pendente' }]);
-    if(error) alert('Erro: ' + error.message); else { alert('Prova enviada!'); document.getElementById('prova-modal').style.display = 'none'; document.getElementById('prova-link').value = ''; document.getElementById('prova-msg').value = ''; }
-  };
+    } catch (erro) {
+      div.innerHTML = `<p style="color:red;">Erro inesperado: ${erro.message}</p>`;
+    }
+  }
 
   async function checkAdmin(user){
     const b = document.getElementById('btn-admin-painel');
@@ -499,7 +518,6 @@ if(window.supabase){
 
   e.auth.onAuthStateChange(()=>setTimeout(t,0)); t(); 
 
-  // Fecha o menu da bolinha se clicar fora dele
   document.addEventListener('click', function(event) {
       const menu = document.getElementById('menu-conta');
       const botao = document.getElementById('btn-topo-perfil');
@@ -514,19 +532,38 @@ if(window.supabase){
     document.getElementById('aba-' + aba).style.display = 'block'; botao.style.background = 'linear-gradient(to bottom,#4ade80,#16a34a)';
   };
 
+  // --- FUNÇÃO PARA BUSCAR E ACEITAR MISSÃO POR ID ---
   window.buscarProvaPorId = async function() {
     const idBusca = document.getElementById('adm-busca-id').value.trim(); const div = document.getElementById('resultado-prova');
     if(!idBusca) { div.innerHTML = 'Digite um ID.'; return; }
-    const { data, error } = await e.from('provas_missoes').select('*').ilike('mission_id', idBusca + '%').eq('status', 'pendente').limit(1).maybeSingle();
-    if (error || !data) { div.innerHTML = 'Nenhuma prova encontrada com esse ID.'; return; }
-    div.innerHTML = `<div style="background: #333; padding: 15px; border-radius: 8px; border: 1px solid #555;"><div style="font-weight: bold; color: #fde047;">Jogador: ${data.username}</div><div style="margin: 5px 0;">Missão: ${data.mission_name}</div><div style="margin-bottom: 10px;">Msg: ${data.message}</div><a href="${data.image_url}" target="_blank" style="color: #38bdf8; text-decoration: underline;">Ver Print</a><div style="display: flex; gap: 10px; margin-top: 10px;"><button onclick="aceitarProva('${data.id}', '${data.user_id}', '${data.mission_id}')" style="background: #4ade80; border: none; padding: 5px 10px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%;">ACEITAR E DAR PONTOS</button></div></div>`;
+    const { data, error } = await e.from('missoes_usuario_dia').select('*, banco_missoes(*)').ilike('mission_id', idBusca + '%').eq('status', 'pendente').limit(1).maybeSingle();
+    if (error || !data) { div.innerHTML = 'Nenhuma missão pendente encontrada com esse ID.'; return; }
+    
+    // Pega o nome do jogador que tem essa missão
+    const { data: playerData } = await e.from('players').select('username').eq('id', data.user_id).single();
+    const nomeJogador = playerData ? playerData.username : 'Jogador Desconhecido';
+
+    div.innerHTML = `<div style="background: #333; padding: 15px; border-radius: 8px; border: 1px solid #555;">
+        <div style="font-weight: bold; color: #fde047;">Jogador: ${nomeJogador}</div>
+        <div style="margin: 5px 0;">Missão: ${data.banco_missoes.title}</div>
+        <div style="margin-bottom: 10px;">Recompensa: +${data.banco_missoes.reward_points} pts</div>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+          <button onclick="aceitarMissao('${data.id}', '${data.user_id}', '${data.mission_id}', ${data.banco_missoes.reward_points})" style="background: #4ade80; border: none; padding: 5px 10px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 100%;">ACEITAR E DAR PONTOS</button>
+        </div></div>`;
   };
 
-  window.aceitarProva = async function(provaId, userId, missionId) {
-    await e.from('provas_missoes').update({ status: 'aceita' }).eq('id', provaId);
-    const { data: m } = await e.from('banco_missoes').select('reward_points').eq('id', missionId).single();
-    if(m) { const { data: player } = await e.from('players').select('points').eq('id', userId).single(); if(player) { await e.from('players').update({ points: player.points + m.reward_points }).eq('id', userId); } }
-    alert('Prova aceita e pontos entregues!'); document.getElementById('resultado-prova').innerHTML = ''; document.getElementById('adm-busca-id').value = '';
+  window.aceitarMissao = async function(provaId, userId, missionId, pontos) {
+    // Muda o status da missão do jogador para 'aceita'
+    await e.from('missoes_usuario_dia').update({ status: 'aceita' }).eq('id', provaId);
+    
+    // Pega os pontos atuais do jogador e soma
+    const { data: player } = await e.from('players').select('points').eq('id', userId).single();
+    if(player) { 
+        await e.from('players').update({ points: player.points + pontos }).eq('id', userId); 
+    }
+    alert('Missão aceita e ' + pontos + ' pontos entregues!'); 
+    document.getElementById('resultado-prova').innerHTML = ''; 
+    document.getElementById('adm-busca-id').value = '';
   };
 
   const btnSalvar = document.getElementById('adm-btn-salvar-ev');
